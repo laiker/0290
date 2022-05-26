@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $post = \App\Models\Post::find(1);
+    dd($post->tags()->get());
+    //return view('welcome');
 });

@@ -1,11 +1,10 @@
 <?
-namespace App\Repositories;
+namespace App;
 
 use App\Models\Post;
 use App\Models\Tag;
-use App\Repositories\Interfaces\PostRepositoryInterface;
 
-class PostRepository implements PostRepositoryInterface
+class test
 {
     public function all()
     {

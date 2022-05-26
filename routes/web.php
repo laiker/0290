@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Repositories\PostRepository;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $post = \App\Models\Post::find(1);
-    dd($post->tags()->get());
+    //$post = \App\Models\Post::find(1);
+    //dd($post->tags()->get());
     //return view('welcome');
+    $rep = new App\test();
 });

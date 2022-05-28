@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained('posts');
             $table->foreignId('tag_id')->constrained('tags');
+            $table->string('tag_color');
         });
     }
 

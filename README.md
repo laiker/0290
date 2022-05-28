@@ -1,64 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Тестовое задание Mello Inc
+### Условия задания 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Необходимо создать проект на Laravel (REST API), только Backend! Предметная область для данных на Ваше усмотрение. Особенности реализации:
 
-## About Laravel
+1. Проект содержит базу данных из двух таблиц со связью многие ко многим;
+2. Работа с базой должна осуществляться через паттерн репозиторий;
+3. Необходимо реализовать простую аутентификацию через ключ (не используя доп. пакеты passport, jwt etc.);
+4. API должно предоставлять доступ к данным с возможностью сортировки и поиску по нескольким полям;
+5. В процессе работы с данными необходимо использовать атрибут pivot для моделей и включить его в запросы по поиску.
+   В качестве результата ссылка на GitLab/GitHub/Bitbucket на выбор, сам репозиторий назвать 0290
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+А также Postman-коллекция, README с описанием и необходимыми действиями для развертывания проекта
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Предметная область
 
-## Learning Laravel
+Предметная область состоит из 2-х таблиц: 
+Посты и теги со связью многие ко многим.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+С помощью API можно получать посты, теги, сортировать по выбранному полю,  производить поиск фразы в ключевых полях поста 
+title, code, detail_text, аналогично можно сортировать теги поста и искать по name, code тега, а также по pivot свойству color.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Структура БД:
 
-## Laravel Sponsors
+Posts
+- id
+- created_at
+- updated_at
+- title
+- code
+- detail_text
+- published
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Tags
+- id
+- created_at
+- updated_at
+- name
+- code
 
-### Premium Partners
+Post_tag
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- id
+- post_id
+- tag_id
+- color
 
-## Contributing
+### Примеры запросов
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**GET** localhost/api/v1/posts - Получение всех постов 
 
-## Code of Conduct
+**GET** localhost/api/v1/posts/{id} - Получение поста
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**GET** localhost/api/v1/posts/{id}/tags - Получение тегов поста
 
-## Security Vulnerabilities
+Для сортировки необходимо в заголовках передать 2 параметра:
+- **sort** - значение выбираемое поле для сортировки
+- **order** - значение порядок сортировки **asc**, **desc**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Для поиска по ключевым столбцам необходимо передать 1 параметр:
+- **q** - значение поисковая подстрока
 
-## License
+Коллекция **Postman** с примерами запросов расположена в корне проекта файл:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Mello Test Posts API Collection.postman_collection.json**
+
+### Запуска проекта
+
+1) Склонировать репозиторий 
+2) Запустить докер контейнер с помощью [Sail](https://laravel.com/docs/9.x/sail#installing-sail-into-existing-applications)
+3) Прописать настройки к БД 
+4) Выполнить migrations и seeds
+   
+   `php artisan migrate:refresh --seed`
+5) Приложение готово к работе, можно тестировать API с помощью Postman , при необходимости поменяв хост, если
+используется отличный от localhost

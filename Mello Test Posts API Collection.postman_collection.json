@@ -1,0 +1,229 @@
+{
+    "info": {
+        "_postman_id": "22bd63d6-f136-48a2-b541-45b46fe1b693",
+        "name": "Mello Test Posts API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "11048874"
+    },
+    "item": [
+        {
+            "name": "API V1",
+            "item": [
+                {
+                    "name": "Posts",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Posts sort by code desc",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts?sort=code&order=desc",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts"
+                            ],
+                            "query": [
+                                {
+                                    "key": "sort",
+                                    "value": "code"
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "desc"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Posts search title contains \"la\"",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts?q=la",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts"
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "la"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Post id = 1",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts/1",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Post id = 1 tags",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts/1/tags",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts",
+                                "1",
+                                "tags"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Post id = 1 tags search pivot color red",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts/1/tags?q=red",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts",
+                                "1",
+                                "tags"
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "red"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Post id = 5 tags sort by  id desc",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "token",
+                                "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "localhost/api/v1/posts/5/tags?sort=code&order=desc",
+                            "host": [
+                                "localhost"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "posts",
+                                "5",
+                                "tags"
+                            ],
+                            "query": [
+                                {
+                                    "key": "sort",
+                                    "value": "code"
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "desc"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

@@ -1,17 +1,19 @@
 <?php
 namespace App\Repositories;
 
+use App\Http\Resources\Post\PostResource;
+use App\Http\Resources\Post\PostCollection;
+use App\Http\Resources\Tag\TagCollection;
 use App\Models\Post;
 
 class PostRepository implements Interfaces\PostRepositoryInterface
 {
     private array $searchPostsFields = ['title', 'code', 'detail_text'];
     private array $searchTagsFields = ['name', 'code', 'tag_color'];
-    private int $perPage = 5;
 
     public function getPosts(string|null $q = '', string $sort = 'id', string $order = 'asc'): object
     {
-        $postsQuery = Post::query();
+        $postsQuery = Post::with('tags');
 
         if ($q) {
             $searchColumns = $this->searchPostsFields;
@@ -22,20 +24,20 @@ class PostRepository implements Interfaces\PostRepositoryInterface
             });
         }
 
-        $postsQuery->orderBy($sort, $order)->cursorPaginate($this->perPage);
+        $postsQuery->orderBy($sort, $order);
 
-        return $postsQuery->get();
+        return new PostCollection($postsQuery->paginate());
     }
 
     public function getPost(int $id): object
     {
-        $postQuery = Post::query()->where('id', $id);
-        return $postQuery->get();;
+        $postQuery = Post::findOrFail($id);
+        return new PostResource($postQuery);
     }
 
     public function getPostTags(int $id, string|null $q = '', string $sort = 'id', string $order = 'asc'): object
     {
-        $tagsQuery = Post::find($id)->tags();
+        $tagsQuery = Post::findOrFail($id)->tags();
 
         if ($q) {
             $searchColumns = $this->searchTagsFields;
@@ -46,8 +48,8 @@ class PostRepository implements Interfaces\PostRepositoryInterface
             });
         }
 
-        $tagsQuery->orderBy($sort, $order)->simplePaginate($this->perPage);
+        $tagsQuery->orderBy($sort, $order);
 
-        return $tagsQuery->get();
+        return new TagCollection($tagsQuery->get());
     }
 }

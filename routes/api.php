@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\PostController;
+use App\Http\Middleware\ApiToken;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,7 +13,7 @@ use App\Http\Controllers\Api\v1\PostController;
 |
 */
 
-Route::group(['middleware' => '\App\Http\Middleware\ApiToken', 'prefix' => 'v1'], function() {
+Route::group(['middleware' => ApiToken::class, 'prefix' => 'v1'], function() {
     Route::get('/posts', [PostController::class, 'getPosts']);
     Route::get('/posts/{id}', [PostController::class, 'getPost']);
     Route::get('/posts/{id}/tags', [PostController::class, 'getPostTags']);

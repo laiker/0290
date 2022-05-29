@@ -11,7 +11,16 @@ class PostRepository implements Interfaces\PostRepositoryInterface
     private array $searchPostsFields = ['title', 'code', 'detail_text'];
     private array $searchTagsFields = ['name', 'code', 'tag_color'];
 
-    public function getPosts(string|null $q = '', string $sort = 'id', string $order = 'asc'): object
+
+    /**
+     * Get all posts with paginate
+     *
+     * @param string|null $q
+     * @param string $sort
+     * @param string $order
+     * @return PostCollection
+     */
+    public function getPosts(string|null $q = '', string $sort = 'id', string $order = 'asc'): PostCollection
     {
         $postsQuery = Post::with('tags');
 
@@ -29,13 +38,28 @@ class PostRepository implements Interfaces\PostRepositoryInterface
         return new PostCollection($postsQuery->paginate());
     }
 
-    public function getPost(int $id): object
+    /**
+     * Get post by ID
+     *
+     * @param int $id
+     * @return PostResource
+     */
+    public function getPost(int $id): PostResource
     {
         $postQuery = Post::findOrFail($id);
         return new PostResource($postQuery);
     }
 
-    public function getPostTags(int $id, string|null $q = '', string $sort = 'id', string $order = 'asc'): object
+    /**
+     * Get post tags bt post Id
+     *
+     * @param int $id
+     * @param string|null $q
+     * @param string $sort
+     * @param string $order
+     * @return TagCollection
+     */
+    public function getPostTags(int $id, ?string $q = '', string $sort = 'id', string $order = 'asc'): TagCollection
     {
         $tagsQuery = Post::findOrFail($id)->tags();
 

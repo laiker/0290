@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('post_id')->constrained('posts');
             $table->foreignId('tag_id')->constrained('tags');
             $table->string('tag_color');

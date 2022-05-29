@@ -35,7 +35,7 @@
                     "response": []
                 },
                 {
-                    "name": "Posts sort by code desc",
+                    "name": "Posts sort by code desc page=2",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -43,10 +43,15 @@
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
                                 "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
                             }
                         ],
                         "url": {
-                            "raw": "localhost/api/v1/posts?sort=code&order=desc",
+                            "raw": "localhost/api/v1/posts?sort=code&order=desc&page=2",
                             "host": [
                                 "localhost"
                             ],
@@ -63,6 +68,10 @@
                                 {
                                     "key": "order",
                                     "value": "desc"
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "2"
                                 }
                             ]
                         }
@@ -77,6 +86,11 @@
                             {
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
                                 "type": "text"
                             }
                         ],
@@ -109,6 +123,11 @@
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
                                 "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
                             }
                         ],
                         "url": {
@@ -134,6 +153,11 @@
                             {
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
                                 "type": "text"
                             }
                         ],
@@ -161,6 +185,11 @@
                             {
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
                                 "type": "text"
                             }
                         ],
@@ -194,6 +223,11 @@
                             {
                                 "key": "token",
                                 "value": "hazHaBLS5MfnxJ61Po3YaHBzrmHxwxFY",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
                                 "type": "text"
                             }
                         ],
